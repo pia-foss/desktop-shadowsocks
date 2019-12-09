@@ -1,0 +1,33 @@
+From 7d52fe4ee3a8aafdaa95e4a4377a8c20d8df1d94 Mon Sep 17 00:00:00 2001
+From: Jonathon Hall <jhall@londontrustmedia.com>
+Date: Mon, 18 Nov 2019 17:20:22 -0500
+Subject: [PATCH] Log actual listening port for use with -l 0
+
+---
+ src/local.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/src/local.c b/src/local.c
+index 97ac681..0dec713 100644
+--- a/src/local.c
++++ b/src/local.c
+@@ -1922,6 +1922,16 @@ main(int argc, char **argv)
+         if (listen(listenfd, SOMAXCONN) == -1) {
+             FATAL("listen() error");
+         }
++
++        // Print the actual bound port; so -l 0 can be passed to pick an
++        // arbitrary port
++        struct sockaddr_in listen_addr;
++        socklen_t listen_addr_len = sizeof(listen_addr);
++        if (getsockname(listenfd, (struct sockaddr *)&listen_addr, &listen_addr_len) == -1) {
++            FATAL("getsockname() error");
++        }
++        LOGI("listening on TCP port %d", ntohs(listen_addr.sin_port));
++
+         setnonblocking(listenfd);
+ 
+         listen_ctx.fd = listenfd;
+-- 
+2.23.0
+

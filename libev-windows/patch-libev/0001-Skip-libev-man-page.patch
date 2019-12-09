@@ -1,0 +1,24 @@
+From 415c48e882afc02953390537d0167d3e52f38e33 Mon Sep 17 00:00:00 2001
+From: Jonathon Hall <jhall@londontrustmedia.com>
+Date: Tue, 5 Nov 2019 21:13:02 -0500
+Subject: [PATCH] Skip libev man page
+
+---
+ Makefile.am | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 7cb68d6..5490d58 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -16,5 +16,5 @@ lib_LTLIBRARIES = libev.la
+ libev_la_SOURCES = ev.c event.c ev_wepoll.c
+ libev_la_LDFLAGS = -version-info $(VERSION_INFO)
+ 
+-ev.3: ev.pod
+-	pod2man -n LIBEV -r "libev-$(VERSION)" -c "libev - high performance full featured event loop" -s3 <$< >$@
++#ev.3: ev.pod
++#	pod2man -n LIBEV -r "libev-$(VERSION)" -c "libev - high performance full featured event loop" -s3 <$< >$@
+-- 
+2.23.0
+

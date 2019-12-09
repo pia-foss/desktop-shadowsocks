@@ -1,0 +1,18 @@
+[submodule "libev-windows/libev"]
+	path = libev-windows/libev
+	url = https://github.com/shadowsocks/libev.git
+[submodule "shadowsocks-libev"]
+	path = shadowsocks-libev
+	url = https://github.com/shadowsocks/shadowsocks-libev.git
+[submodule "mbedtls"]
+	path = mbedtls
+	url = https://github.com/ARMmbed/mbedtls.git
+[submodule "libsodium"]
+	path = libsodium
+	url = https://github.com/jedisct1/libsodium.git
+[submodule "c-ares"]
+	path = c-ares
+	url = https://github.com/c-ares/c-ares.git
+[submodule "libev-posix/libev"]
+	path = libev-posix/libev
+	url = https://github.com/shadowsocks/libev.git
